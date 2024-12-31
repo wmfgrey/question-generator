@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style>
+p{
+ font-family: helvetica;
+ 
+}
+
+h1,h2,h3{
+ font-family: helvetica;
+}
+
+label{
+ font-family: helvetica;
+ font-size: 120%;
+}
+
+</style>
+</head>
+
+<body>
+
+<h2> GCSE Computer Science Starter Quiz </h2>
+
+<label for="interleaved">Enter number of interleaved questions:</label>
+<select id="interleaved" name="interleaved">
+  <option value="0">0</option>
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+  <option value="6">6</option>
+</select><br><br>
+
+<label for="interleavedQ">Enter topic questions (multiple selection, hold down ctrl key and mouse click):</label><br><br>
+<select id="interleavedQ" name="interleavedQ" size="10" multiple>
+  <option value="Algorithms">Algorithms</option>
+  <option value="Boolean">Boolean</option>
+  <option value="Computer Systems">Computer Systems</option>
+  <option value="Data Representation">Data Representation</option>
+  <option value="Database">Database</option>
+  <option value="Legal issues">Legal Issues</option>
+  <option value="Networking">Networking</option>
+  <option value="Numbers">Numbers</option>
+  <option value="Programming">Programming</option>
+  <option value="Security">Security</option> 
+</select><br><br>
+
+<label for="topic">Enter number of topic questions:</label>
+<select id="topic" name="topic">
+  <option value="0">0</option>
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+  <option value="6">6</option>
+</select><br><br>
+
+<label for="topicQ">Enter topic questions:</label>
+<select id="topicQ" name="topicQ">
+  <option value="Algorithms">Algorithms</option>
+  <option value="Boolean">Boolean</option>
+  <option value="Computer Systems">Computer Systems</option>
+  <option value="Data Representation">Data Representation</option>
+  <option value="Database">Database</option>
+  <option value="Legal issues">Legal Issues</option>
+  <option value="Networking">Networking</option>
+  <option value="Numbers">Numbers</option>
+  <option value="Programming">Programming</option>
+  <option value="Security">Security</option> 
+</select><br><br>
+
+<button onclick="run()">Generate Quiz</button>
+<br><br>
+
+<DIV class="w3-container w3-teal">
+<H2>Questions</H2>
+<H2 id="randomInter"></H2>
+<H2 id="random" ></H2><br>
+</DIV>
+<BR><BR>
+<DIV class="w3-container w3-light-grey">
+<H2>Answers</H2>
+<H2 id="randomInterA" ></H2>
+<H2 id="randomA" ></H2><br>
+</DIV>
+<BR><BR>
+<script>
+
+function run()
+{
+ generateQuiz()
+}
+
+function generateQuiz()
+{
+
+q=[
+["What is abstraction?", "Remove details of a problem until you are left with a problem that you already know how to solve", "Algorithms"],
+["What does decomposition mean?", "Breaking down of a complex problem into smaller more manageable problems that are easier to solve", "Algorithms"],
+["Define what an algorithm is", "A sequence of ordered steps for solving a problem", "Algorithms"],
+["Which searching algorithm does not require the items to be ordered?", "linear search", "Algorithms"],
+["Which searching algorithm is most suited for very long lists with many elements: binary search or linear search?", "binary search", "Algorithms"],
+["Which sorting algorithm fall into the category of algorithms knows as divide and conquer?", "Merge sort", "Algorithms"],
+["Which algorithm compares each element in a list with a target value until it finds the index position of the value?", "linear search", "Algorithms"],
+["Which sorting algorithm swaps pairs of adjacent values that are in the incorrect order?", "Bubble sort", "Algorithms"],
+["Explain the main benefit of linear search over binary search", "The list does not need to be ordered", "Algorithms"],
+["Which searching algorithm halves the search space for each iteration?", "binary search", "Algorithms"],
+["Why can you not apply the binary search algorithm to the following sequence [31,27,81,63,21,3, 18]?", "because they are not in order", "Algorithms"],
+["How many passes will be needed when bubble sort is applied to the sequence [11,15,3,19,9] to sort completely in ascending order?", "3", "Algorithms"],
+["How many swaps will be needed when bubble sort is applied to the sequence [14,17,4,18,10] to sort completely in ascending order?", "5", "Algorithms"],
+["Show the steps when bubble sort is applied to the sequence [12,17,6,19,10] to put in ascending order", "12 6 17 19 10 / 12 6 17 10 19 /  6 12 17 10 19 / 6 12 10 17 19 /  6 10 12 17 19", "Algorithms"],
+["Give 4 examples of Boolean operators", "AND OR XOR NOT", "Boolean"],
+["Which logic gate requires that both inputs have to be true for the output to be true?", "AND gate", "Boolean"],
+["Which logic gate only requires one of inputs have to be true for the output to be true?", "OR gate", "Boolean"],
+["Which logic gate requires that only of one of inputs can to true for the output to be true?", "XOR gate", "Boolean"],
+["Given the logic expression Q=A.B what is the value of Q when A and B are both 0?", "0", "Boolean"],
+["Given the logic expression Q=A+B what is the value of Q when A is True and B is False?", "True", "Boolean"],
+["A logic circuit is given as Q = A AND (NOT B). What is the value A and B is 1 when Q is 1?", "A is 1 and B is 0", "Boolean"],
+["A logic circuit is given as Q = NOT (A OR B). What is the value of B if Q is 1 and A is 0?", "B is 0", "Boolean"],
+["A logic gate is given as Q = A XOR B. What is the value A when B is 1 and Q is 0?", "1", "Boolean"],
+["In the context of computing what is a bus?", "Wires through which data and instructions are transferred between computer components", "Computer Systems"],
+["What are registers?", "Memory locations on the CPU used for storing frequently used data and instructions", "Computer Systems"],
+["What is volatile memory?", "Contents of memory are lost when there is no power", "Computer Systems"],
+["Explain the fetch-decode-execute cycle", "The instructions are loaded into memory; The processor fetches the instruction from the main memory; The instruction is decoded so the CPU knows what to do with the instruction; The processor then executes the instruction; The result of the instruction can be stored in memory; The next instruction is then fetched from main memory and the cycle repeats itself", "Computer Systems"],
+["Which secondary storage system uses lasers?", "Optical", "Computer Systems"],
+["Which secondary storage system uses flash memory to store?", "Solid state drive", "Computer Systems"],
+["What type of memory does the BIOS use?", "ROM", "Computer Systems"],
+["What is virtual memory?", "Additional memory on secondary storage that behaves like primary storage", "Computer Systems"],
+["What type of memory cannot have its contents edited or changes?", "ROM (Read Only Memory)", "Computer Systems"],
+["What is the cloud?", "Can store data and files on a server elsewhere that can be accesses via the internet.  Can also use applications over the internet", "Computer Systems"],
+["What is an embedded system?", "A computer system that is designed for a specific function and are part of another machine", "Computer Systems"],
+["What is the purpose of the BIOS?", "Loads the operating system; performs a variety of tests during bootup", "Computer Systems"],
+["Explain how hard disk drives work", "Has tiny magnets on a disk platter that store bits of data that are encoded by the polarity of the magnet; A moving head can read and write to the disk", "Computer Systems"],
+["Explain how optical disks work", "Have pits and lands for scattering and reflecting laser light which are encoded as 1 and 0s", "Computer Systems"],
+["Which part of a CPU keeps all the CPU components synchronised?", "Clock", "Computer Systems"],
+["Which part of the CPU performs the arithmetic and logic operations?", "ALU", "Computer Systems"],
+["Which secondary storage device uses gates to store electrons?", "Solid state device", "Computer Systems"],
+["Describe Von Neumann architecture", "Program instructions and the data to be processed are stored in the same memory", "Computer Systems"],
+["Give two examples of system software", "operating system/anti-viruses", "Computer Systems"],
+["Name 3 components of the processor", "Clock / Arithmetic logic unit / Registers / control unit", "Computer Systems"],
+["What are the disadvantages of the cloud?", "Need a good reliable internet connection / Putting trust in tech companies that store your data who will use your data for financial gain", "Computer Systems"],
+["Give two examples of application software", "word processor / spreadsheet", "Computer Systems"],
+["What are the advantages of the cloud?", "Can access files on any device / only pay for storage that you use / can share files", "Computer Systems"],
+["Give 3 examples of utility software", "Anti-virus / defragmenter / firewall", "Computer Systems"],
+["Explain the benefits of solid state disk over hard disk drive", "Has no moving parts so is more durable / has faster operation", "Computer Systems"],
+["List some characteristics that affect the performance of a CPU", "Clock speed / Number of cores / cache type and cache size", "Computer Systems"],
+["Give 3 examples of secondary storage", "Hard disk drive / optical disks / solid state disks", "Computer Systems"],
+["List 4 roles of the operating system", "Application management / processor management / file management / memory management / user interface / user management / peripheral management", "Computer Systems"],
+["Why do we need to compress files?", "To make them smaller so they take less up less bandwidth during transmission and take up less space on disk", "Data Representation"],
+["Explain lossless compression", "The original uncompressed file can be recreated exactly", "Data Representation"],
+["Explain lossy compression", "Some quality is lost from the original uncompressed file", "Data Representation"],
+["Up to how many colours can be represented in  an image with a colour depth of 5 bits?", "32", "Data Representation"],
+["What is the minimum number of bits per pixel needed to represent an image containing only 12 colours?", "4 bits", "Data Representation"],
+["What best describes colour depth of an image?", "The number of bits per pixel", "Data Representation"],
+["What is quantising?", "When samples are rounded to the nearest integer", "Data Representation"],
+["What is the sample resolution of a digital signal?", "The number of bits used to represent each sample", "Data Representation"],
+["Explain Pixilation", "Occurs when the image is overstretched and the image has a blocky and blurred appearance. This arises when the image is presented at too large a size and there are not enough pixels to reproduce the details in the image at this larger size", "Data Representation"],
+["What is resolution?", "Image resolution is the number of pixels per area of an image and is often given in dots per inch (DPI). The more pixels the better the quality of the image. Lower resolution images may be pixelated", "Data Representation"],
+["What is the sample rate of a digital sound wave?", "Number of samples per second", "Data Representation"],
+["How do you convert from an analogue to digital signal?", "1: Convert the sound wave to an electrical signal 2: Sample the wave 3: quantise the sample 4: encode as binary", "Data Representation"],
+["What is the sampling resolution of a sound wave?", "Number of bits per sample", "Data Representation"],
+["What is the sample rate of a digital signal?", "Number of samples per second", "Data Representation"],
+["Calculate the size of the image in bytes if the dimensions a bitmap image is 100 by 50 pixels and the colour depth is 4 bits", "2500", "Data Representation"],
+["A 10 second audio file is sampled at 500 Hz and has 8 bits per sample.  What is the size of the file in kilobytes?", "5", "Data Representation"],
+["Explain what metadata is and give some examples", "Metadata is information about the image and is stored within the image itself. Examples: Dimensions: width and height / colour depth / resolution", "Data Representation"],
+["what is a pixel?", "Pixels are tiny dots that make up bitmap images. An image can be constructed from many pixels which will have different colours arranged in rows and columns", "Data Representation"],
+["What is a database attribute?", "A characteristic of  a record", "Database"],
+["What is a primary key?", "An attribute that uniquely identifies each record", "Database"],
+["What are primary keys is other tables that allow tables linked together by cross referencing data between tables?", "Foreign Key", "Database"],
+["Which legislation is designed to protect computer systems from unauthorised access?", "Computer Misuse Act", "Legal Issues"],
+["Which legislation makes it illegal to spread computer viruses?", "Computer Misuse Act", "Legal Issues"],
+["Which legislation makes it illegal to use someone's Wi-fi without authorisation?", "Telecommunications Act", "Legal Issues"],
+["Which legislation forbids sharing information about an individual without permission?", "Data Protection Act", "Legal Issues"],
+["Which legislation is designed to protect intellectual property?", "Copyright Designs and Patents Act", "Legal Issues"],
+["Which legislation is designed to protect information collected by an orgnaisation about an individual?", "Data Protection Act", "Legal Issues"],
+["What is software piracy?", "Illegally copy and distribute copyrighted software", "Legal Issues"],
+["Under what licence can a creator allow others to copy their work?", "Creative common licence", "Legal Issues"],
+["Which legislation mandates an internet service provider to keep a record of the websites their customers have accessed?", "Investigatory Powers Act", "Legal Issues"],
+["What are the advantages of fibre optic over copper wires?", "Fibre optic has higher bandwidth", "Networking"],
+["What is latency?", "A delay in transmission of the signal", "Networking"],
+["What network topology has all devices connected to a cable?", "Bus network", "Networking"],
+["What network topology has all devices connected to a server?", "Star network", "Networking"],
+["What network topology has each node is connected to two other nodes?", "Ring network", "Networking"],
+["What network topology has each device connected to every other device on the network?", "Full mesh network", "Networking"],
+["What types of cables are used for the existing telephone network?", "Copper", "Networking"],
+["What type of cables are used for the internet backbone?", "Fibre Optic", "Networking"],
+["Which application layer protocol uses encryption for transferring data between a web browser and a server?", "HTTPS", "Networking"],
+["Which application layer protocols are used for retrieving email from the server to the client?", "POP3 and IMAP", "Networking"],
+["What is the purpose of SMTP application layer protocol?", "Sends email from the client to the server", "Networking"],
+["What application layer protocol is used for online e-commerce and banking?", "HTTPS", "Networking"],
+["What is a Personal Area Network (PAN)?", "A network set up around an individual person", "Networking"],
+["What is a Local Area Network (LAN)?", "A network that typically extends over the range of a single organisation", "Networking"],
+["What is a Wide Area Network (WAN)?", "A network is made up of  many smaller networks and covers a wide geographical area", "Networking"],
+["What is Bluetooth?", "Wireless communication using radio waves between pairs of devices over a short range of a few metres", "Networking"],
+["Explain what a packet is?", "Data split into chunks to transmit over a network", "Networking"],
+["Explain what we mean by network topology", "Describes the arrangement of how devices are connected on a network", "Networking"],
+["Explain the difference between the internet and world wide web", "The internet is the ultimate network of networks and the world wide web is the service that runs on the internet that allows documents to be connected by hyperlinks", "Networking"],
+["What application layer protocol is most suitable for transferring large files?", "FTP", "Networking"],
+["What type of network uses encryption to secure the communication so that safe remote access to the private network can be facilitated?", "virtual private network", "Networking"],
+["What transport layer protocol is used for streaming lots of data eg for gaming and video conferencing?", "UDP", "Networking"],
+["What is a standalone computer?", "A computer which is not connected to the network", "Networking"],
+["Which application layer protocol is use for accessing web sites?", "HTTP", "Networking"],
+["For a MAC Address filter what is the difference between a white list and a black list?", "A white list only allows devices on the list to access the network whereas a black list allows all devices to connect except those that are on the list", "Networking"],
+["What are the advantages of a wireless network compared with a wired network?", "Can easily connect to a network and allows increase mobility of working from a device", "Networking"],
+["In TCP/IP which layer splits the data into packets?", "Application layer", "Networking"],
+["In TCP/IP which layer add the MAC addresses to the packets?", "Data layer", "Networking"],
+["What are the advantages of a wired network compared with a wireless network?", "it is more secure and has greater bandwidth", "Networking"],
+["Explain what a network is", "A set of computers are connected to one another so that they can communicate and share resources", "Networking"],
+["In the 4 layer TCP/IP model what are the layers?", "Application layer / Transport layer / Network layer / Data Layer", "Networking"],
+["What is the advantage of the star topology?", "Packets are only sent to the intended recipient / fewer collisions / if clients fail / network still works", "Networking"],
+["In TCP/IP which layer adds the sender and receiver's IP addresses to the packets?", "Network Layer", "Networking"],
+["List three pieces of information that a data packets contains", "IP address / data payload / packet ID / Error checking / MAC address", "Networking"],
+["What is the are the similarities and difference between wifi and bluetooth?", "Similarity: Both use radio waves to communicate wirelessly. Differences: bluetooth is over shorter range / typically Bluetooth used only in PANs / wireless used in LANs / Bluetooth has a limit on the number of devices and wifi does not", "Networking"],
+["How many bits are there in a Byte?", "8", "Numbers"],
+["What are the advantages of Unicode over ASCII?", "More characters can be represented using Unicode", "Numbers"],
+["What are the advantages of ASCII over Unicode?", "ASCII has fewer bits per character so has lower bandwidth requirements and is quicker to transmit", "Numbers"],
+["Put the following in ascending order by size: Gigabyte Kilobyte Petabyte Terabyte Megabyte", "kilobyte Megabyte Gigabyte Terabyte Petabyte", "Numbers"],
+["How many different numbers can I have with 4 bits?", "16", "Numbers"],
+["What is the decimal number 83 in binary?", "1010011", "Numbers"],
+["What is the binary number 00011110 in decimal?", "30", "Numbers"],
+["What is the hexadecimal number AE in binary?", "101001110", "Numbers"],
+["What is the hexadecimal number BD in decimal?", "189", "Numbers"],
+["What is the decimal number 123 in hexaecimal?", "7B", "Numbers"],
+["What is the binary number 01101101 in hexadecimal?", "6D", "Numbers"],
+["What is 5 << 2?", "20", "Numbers"],
+["What is 13 >> 1?", "6", "Numbers"],
+["What is 00011011 + 01000100 + 10000011?", "11100010", "Numbers"],
+["If the ASCII value for A is 65 what is the ASCII letter that the ASCII value 72 represents?", "H", "Numbers"],
+["If the ASCII value for a is 97 what is the ASCII letter that the ASCII value 100 represents?", "d", "Numbers"],
+["If the ASCII value for I is 73 what is the ASCII value for the letter N represents?", "78", "Numbers"],
+["Apply Run length encoding to the following sequence: 11001100100111101. Which is the encoding?", "21:20:21:20:11:20:41:10:11", "Numbers"],
+["Explain the process of run length encoding", "Sequences of the same values are stored in pairs of the value and the number of those values", "Numbers"],
+["In which situation might run length encoding actually increase the size of a file?", "When there are no long sequences of the same value", "Numbers"],
+["The following is a run length encoding compression: 2:0 3:1 4:0 4:1 3:0 2:1. What is the binary sequence?", "001110000111100011", "Numbers"],
+["which is bigger: 4000 bits or 500 Bytes?", "Both are the same size", "Numbers"],
+["which is bigger: 10KB or 0.1MB?", "0.1MB", "Numbers"],
+["How many bits are needed to represent the phrase 'Good Day' in 7-bit ASCII?", "56", "Numbers"],
+["Why is hexadecimal used instead of binary?", "Used as a short hand and fewer digits needed to represent a number so easier for humans to read and understand", "Numbers"],
+["What programming translator converts the whole code into a binary file containing machine code?", "Compiler", "Programming"],
+["What is the purpose of assembler?", "Translates assembly language to machine code", "Programming"],
+["What is machine code?", "Executable code expressed as zeros and ones", "Programming"],
+["What is debugging?", "Finding and fixing errors in the code", "Programming"],
+["What datatype would you use to represent text?", "string or characer", "Programming"],
+["What datatype would you use to represent 'Bonjour'?", "String", "Programming"],
+["What datatype would you use to represent the numbers 4.13 and 19.35?", "Real / float", "Programming"],
+["What is the value of NOT(3 < 4)?", "False", "Programming"],
+["What is 11 MOD 3?", "2", "Programming"],
+["What is 9 DIV 4?", "2", "Programming"],
+["Which programming construct that uses WHILE or FOR loop that allow a block of code to be run multiple times by returning to an earlier line in the code?", "iteration", "Programming"],
+["Which type of iteration continues looping until some condition is met?", "WHILE loop; indefinite iteration", "Programming"],
+["Which type of iteration has a fixed number of loops?", "FOR loop; definite iteration", "Programming"],
+["What is concatenation?", "Linking multiple strings together", "Programming"],
+["What is a global variable?", "A variable that can be used anywhere in a program", "Programming"],
+["What is a local variable?", "A variable that can only be accessed within a certain block of code typically within a function", "Programming"],
+["What is casting?", "Convert between different datatypes", "Programming"],
+["What is a variable? ", "stores a value in memory that can changed during the execution of the program", "Programming"],
+["What are values that passed as inputs into a subroutine called?", "Parameters", "Programming"],
+["What the purpose of validation for a computer system?", "to determine whether the input values should be accepted by the systems or not", "Programming"],
+["Is assembly language a high level or low level programming language?", "Low level", "Programming"],
+["Is machine code a high level or low level programming language?", "Low level", "Programming"],
+["which programming translator converts the code line by line as it runs?", "Interpreter", "Programming"],
+["What is erroneous test data?", "Data that are invalid and should not be accepted by the application", "Programming"],
+["What is boundary test data?", "Data on the upper and lower limits of what is expected should be accepted and data immediately beyond the upper and lower limits of what is expected should not be accepted", "Programming"],
+["What is a runtime error?", "An error that is not picked up during translation, Error during the running of the code", "Programming"],
+["Which programming construct uses IF and ELSE to represents a decision in the code according to some condition?", "Selection", "Programming"],
+["What is the difference between a procedure and a function?", "A function returns a value", "Programming"],
+["What datatype you use to represent someone's age?", "Integer", "Programming"],
+["what is a data structure that can hold multiple values called?", "Array/list", "Programming"],
+["What are the advantages of low level programming languages compared high level languages?", "Low level languages are better optimised because there is no need for translation and can be used to code up embedded systems for which there are no compilers or interpreters", "Programming"],
+["Describe two input validation checks for entering the age of a school pupil", "Check that input is the integer datatype and check that it is within a sensible range eg 3-19", "Programming"],
+["What are the advantates of high level languages compared with low level languages?", "Easier to understand and easier to debug", "Programming"],
+["Is the following expression (9 == 6) or (9 < 10) true or false?", "False", "Programming"],
+["List 3 datatypes used in programming languages", "Boolean / Real / integer / String / character", "Programming"],
+["What are syntax errors?", "Errors that will be picked up by the translator before running that including typos", "Programming"],
+["What are the advantages of subroutines?", "Can easily reuse code and makes code easier to debug", "Programming"],
+["Given the array a=[3,4,1,2,9,8], what the value of a[4] with index position starting at 1?", "2", "Programming"],
+["Given the array a=[3,4,1,2,9,8], what the value of a[5]-a[1] with index position starting at 1?", "6", "Programming"],
+["Given the array a=[1,2,3,4,5,6] what is returned using the pseudocode statement LENGTH(a)-1?", "5", "Programming"],
+["What datatype would you use to represent the following numbers: 19,-13, 123?", "Integer", "Programming"],
+["Given the two-dimensional array a=[[3,4,5][6,7,8][9,10,11]], what the value of a[1][2] with index position starting at 1?", "4", "Programming"],
+["What is the Boolean datatype?", "Has two values: true or false", "Programming"],
+["What datatype would you use to represent an individual letter or symbol?", "Character", "Programming"],
+["What is normal test data?", "Data that we would expect to be input and should be accepted by the application", "Programming"],
+["What is malware?", "Malicious software purposefully developed to cause harm to a computer system", "Security"],
+["What are biometric measures?", "Human characteristics such as fingerprints, facial recognition and iris scans", "Security"],
+["What malware attaches to network tools and spreads automatically around a network?", "worm", "Security"],
+["What malware gains access to a computer by pretending to be legitimate software?", "Trojan", "Security"],
+["What malware logs your activity on your computer?", "Spyware", "Security"],
+["What malware prevents the user accessing files and demands payment so the user can access their files again?", "Ransomware", "Security"],
+["What malware replicates itself and infects other programs?", "Virus", "Security"],
+["What is the purpose of authentication?", "To confirm the identity an individual", "Security"],
+["What is a denial of service attack?", "Purposefully impair the operation of a computer system", "Security"],
+["List 3 social engineering attacks", "blagging, phishing, pharming, shoulder surfing", "Security"],
+["What is the difference between black box and white box penetration testing?"," black box simulates no insider knowledge and white box simulates insider knowledge","Security"]
+]
+
+ inter = parseInt(document.getElementById("interleaved").value);
+ //document.getElementById("int").innerHTML=inter;
+  
+ topc = parseInt(document.getElementById("topic").value);
+ //document.getElementById("top").innerHTML=topc;
+ 
+ topcQ = document.getElementById("topicQ").value;
+ //document.getElementById("topQ").innerHTML=topcQ;
+ 
+ const interQ = [];
+ var j=0;
+ 
+ var x=document.getElementById("interleavedQ");
+ for (var i = 0; i < x.options.length; i++) {
+     if(x.options[i].selected ==true){
+	      interQ[j]=x.options[i].value;
+		  j=j+1;     
+      }
+  }
+  
+ // document.getElementById("intQ").innerHTML=interQ.join(" ");
+  
+  const randomQ = [];
+  const QuestionSample=[];
+  const AnswerSample=[];
+  
+  for (var i = 0; i < topc; i++) {
+    val = Math.floor((Math.random() * q.length));
+	flag=0;
+	
+	 while (q[val][2] != topcQ || flag==0){
+	  val = Math.floor((Math.random() * q.length));
+	  
+      flag=1;	  
+	  for (var j = 0; j < QuestionSample.length; j++){
+	    if (randomQ[j]==val){
+	     flag=0;
+		}
+	  }
+	  
+	 }
+	 
+	 randomQ[i]=val
+	 QuestionSample[i]=q[randomQ[i]][0];
+	 AnswerSample[i]=q[randomQ[i]][0]+"<BR>"+q[randomQ[i]][1];
+  }
+  
+   document.getElementById("random").innerHTML=QuestionSample.join("<br><br>");
+   document.getElementById("randomA").innerHTML=AnswerSample.join("<br><br>");
+  
+  const randomQinter = [];
+  const QuestionSampleInter=[];
+  const AnswerSampleInter=[];
+  
+  for (var i = 0; i < inter; i++) {
+    val = Math.floor((Math.random() * q.length));
+	flag=0;
+	flag1=0;
+	
+	 while (flag==0 || flag1==0){
+	  val = Math.floor((Math.random() * q.length));
+	  
+	  flag1=0;
+	  for (var j = 0; j < interQ.length; j++){
+	   if (interQ[j]==q[val][2]){
+	    flag1=1;
+	   }
+	  }
+	  
+      flag=1;	  
+	  for (var j = 0; j < QuestionSampleInter.length; j++){
+	    if (randomQinter[j]==val){
+	     flag=0;
+		}
+	  }
+	  
+	 }
+	 
+	 randomQinter[i]=val
+	 QuestionSampleInter[i]=q[randomQinter[i]][0];
+	 AnswerSampleInter[i]=q[randomQinter[i]][0]+"<BR>"+q[randomQinter[i]][1];
+  }
+  
+   document.getElementById("randomInter").innerHTML=QuestionSampleInter.join("<br><br>");
+   document.getElementById("randomInterA").innerHTML=AnswerSampleInter.join("<br><br>");
+  
+}
+</script>
+
+
+
+</body>
+</html>

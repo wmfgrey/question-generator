@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style>
+p{
+ font-family: helvetica;
+ 
+}
+
+h1,h2,h3{
+ font-family: helvetica;
+}
+
+label{
+ font-family: helvetica;
+ font-size: 120%;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1> A Level Computer Science Starter Quiz </h1>
+
+<label for="interleaved">Enter number of interleaved questions:</label>
+<select id="interleaved" name="interleaved">
+  <option value="0">0</option>
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+  <option value="6">6</option>
+</select><br><br>
+
+<label for="interleavedQ">Enter topic questions (multiple selection, hold down ctrl key and mouse click):</label><br><br>
+<select id="interleavedQ" name="interleavedQ" size="16" multiple>
+ <option value="Abstract Data Types">Abstract Data Types</option>
+ <option value="Algorithms">Algorithms</option>
+ <option value="Architecture">Architecture</option>
+ <option value="Boolean">Boolean</option>
+ <option value="Communication and Networking">Communication and Networking</option>
+ <option value="Data Representation">Data Representation</option>
+ <option value="Databases">Databases</option>
+ <option value="Floating Point">Floating Point</option>
+ <option value="Functional Programming">Functional Programming</option>
+ <option value="Hardware and Software">Hardware and Software</option>
+ <option value="Number Systems">Number Systems</option>
+ <option value="Programming">Programming</option>
+ <option value="Regular Expressions">Regular Expressions</option>
+ <option value="Security">Security</option>
+ <option value="Society">Society</option>
+ <option value="Theory of Computation">Theory of Computation</option>
+</select><br><br>
+
+<label for="topic">Enter number of topic questions:</label>
+<select id="topic" name="topic">
+  <option value="0">0</option>
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+  <option value="6">6</option>
+</select><br><br>
+
+<label for="topicQ">Enter topic questions:</label>
+<select id="topicQ" name="topicQ">
+ <option value="Abstract Data Types">Abstract Data Types</option>
+ <option value="Algorithms">Algorithms</option>
+ <option value="Architecture">Architecture</option>
+ <option value="Boolean">Boolean</option>
+ <option value="Communication and Networking">Communication and Networking</option>
+ <option value="Data Representation">Data Representation</option>
+ <option value="Databases">Databases</option>
+ <option value="Floating Point">Floating Point</option>
+ <option value="Functional Programming">Functional Programming</option>
+ <option value="Hardware and Software">Hardware and Software</option>
+ <option value="Number Systems">Number Systems</option>
+ <option value="Programming">Programming</option>
+ <option value="Regular Expressions">Regular Expressions</option>
+ <option value="Security">Security</option>
+ <option value="Society">Society</option>
+ <option value="Theory of Computation">Theory of Computation</option>
+</select><br><br>
+
+<button onclick="run()">Generate Quiz</button>
+<br><br>
+
+<DIV class="w3-container w3-teal">
+<H2>Questions</H2>
+<H2 id="randomInter"></H2>
+<H2 id="random" ></H2><br>
+</DIV>
+<BR><BR>
+<DIV class="w3-container w3-light-grey">
+<H2>Answers</H2>
+<H2 id="randomInterA" ></H2>
+<H2 id="randomA" ></H2><br>
+</DIV>
+<BR><BR>
+
+<script>
+
+function run()
+{
+ generateQuiz()
+}
+
+function generateQuiz()
+{
+
+q=[
+["What is -76 as signed binary?", "10110100","Number Systems"],
+["In binary what is 11001101 – 10001010?", "01000011","Number Systems"],
+["What is larger the hexadecimal number ABC, the denary number 12345, or the binary number 111111111?","12345","Number Systems"],
+["In binary what is 1110 × 1111?", "11010010","Number Systems"],
+["What is 7.875 in fixed point representation?", "0111.1110","Number Systems"],
+["What is 10.11012 in denary?", "2.8125","Number Systems"],
+["Order the following list for the number of bytes from largest to smallest: 1 Mebibyte, 3000 Kilobytes, 2 Megabytes, 30 billion bytes","1. 30 billion Bytes 2.	3000 KiloBytes  3.	2 MegaBytes 4.	1 MebiByte","Number Systems"],
+["What is a natural number?", "An integer value that can be zero or greater","Number Systems"],
+["Explain the difference between a rational and irrational number?", "A rational number is a number that can be represented by a fraction and an irrational number is a number that cannot be represented by a fraction","Number Systems"],
+["Explain the difference between the set of natural numbers and the set of integers.", "Natural numbers are positive integers 0 or greater, so natural numbers are a subset of integers","Number Systems"],
+["What is a cardinal number?","Used for counting. Tells us how many things there are","Number Systems"],
+["What is an ordinal number?","Tells us position of an item in a list","Number Systems"],
+["What is 13.75  in normalised floating point?"," 0.1101110 0100","Floating Point"],
+["What is -60 in normalised floating point?"," 1.0001000 0110","Floating Point"],
+["What is -0.09375  in normalised floating point?","  1.0100000 1101","Floating Point"],
+["What is the denary value for the floating point number 1.0100000 1111?"," 0.125","Floating Point"],
+["What is the denary value for the floating point number 0.1101000 0010?","3.25","Floating Point"],
+["Given a fixed number of bits for a floating point number how would you increase the range of floating point number? What would happen to the precision?","Use more bits for the exponent, however there will be fewer bits for mantissa so precision will be reduced","Floating Point"],
+["Normalise the following floating point binary number: 0.0000010 0011","0.10000 1110","Floating Point"],
+["Normalise the following floating point binary number: 1.1110011 0100","1.0011000 0001","Floating Point"],
+["What is underflow?","Number is too small to be represented for a given number of bits","Floating Point"],
+["What is overflow?","Number is too large to be held for a given number of bits","Floating Point"], 
+["Explain the advantages and disadvantages of using floating point representation over fixed point representation","Fixed point binary is quicker than floating point binary and requires fewer operations to perform calculations, Floating point representation can represent a far greater range of numbers than fixed point representation","Floating Point"],
+["What determines the range and precision of a floating point representation?", "Range is determined by the number of bits in the exponent, and the precision by the number of bits in the mantissa.  The greater the number of bits in the mantissa the greater the precision, the greater the the number of bits for the exponent the greater the range","Floating Point"],
+["Given 6 bits for mantissa and 4 for exponent what is the biggest magnitude normalised positive value that can be represented?","0.11111 0111","Floating Point"],
+["Given 6 bits for mantissa and 4 for exponent what is the smallest magnitude normalised positive value that can be represented?","0.10000 1000","Floating Point"],
+["Given 6 bits for mantissa and 4 for exponent what is the biggest magnitude normalised negative value that can be represented?","1.00000 0111","Floating Point"],
+["Given 6 bits for mantissa and 4 for exponent what is the smallest magnitude normalised value negative that can be represented?","1.01111 1000","Floating Point"],
+["Why do we normalise floating point numbers?","To maximise precision, to compare numbers more easily, a single way to represent a number will be helpful for consistency","Data Representation"],
+["What is the check bit for the following sequence using even parity: _ 0 1 0 1 0 1 0 0 1", "0","Data Representation"],
+["What is the disadvantage of using parity bits compared with majority voting","The data can still be used even if there is an error in the bit, but for parity checking we do not know which bit is corrupted so we cannot correct it","Data Representation"],
+["The maximum frequency in a sound file is 1000Hz. Explain why a minimum sample rate of 2000Hz is required to accurately represent signal","According to Nyquist Theorem we need to sample at twice the rate of the maximum frequency so 2000Hz is twice the frequency of 1000Hz","Data Representation"],
+["Explain the difference between rational and irrational numbers","Rational numbers can be represented by fractions, irrational numbers cannot","Data Representation"], 	
+["Explain what cryptoanalysis is","Cryptoanalysis is the breaking of encrypted codes without being given the key","Data Representation"],
+["What three features make the Vernam Cypher impossible to break?","The key is only used once, the length of the key is at least long as the message that we want to send and it is truly random","Data Representation"],
+["What is plaintext and ciphertext?","Plaintext is the original message, Ciphertext is the encrypted message","Data Representation"],
+["Explain how Caesar Cipher works","The Caesar cipher is a shift substitution cipher", "It works by replacing a letter with another letter that is shifted along in the alphabet by a set number of places. The key is a letter and lets us know the number of letters we shift the alphabet by","Data Representation"],
+["Using a key of B decrypt the following cyphertext “SPNBO” that have been encoded using the Caesar Cipher","Roman","Data Representation"],
+["Explain the difference between lossy and lossless compression","Lossless compression refers to a compression technique where the original uncompressed representation can be recreated exactly from the compressed image.  That is we can reverse the compression and the uncompressed data file will be exactly (down to the last bit) the same as the original file. Lossy compression reduces the size of the image but the original uncompressed data will not be able to be fully recreated. Lossy compression only approximates the uncompressed data and only some of the data may be irrecoverable. Some of the quality of the original file will be lost.","Data Representation"],
+["Apply Run length encoding to the following sequence: 11001100100111101. What is the encoding?","21:20:21:20:11:20:41:10:11","Data Representation"],
+["Why do we need to compress files?","To make them smaller so they take less up less bandwidth during transmission and take up less space on disk","Data Representation"],
+["What is the difference between vector and bitmap graphics","Bitmap graphics are made of pixels.  Vector graphics are made up of primitive shapes such as point, lines and polygons.","Data Representation"],
+["In which situations would bitmap and vector graphics be most suitable","Bitmaps good for photograph with a high range of colours, vector graphics good for animations and logos where there are a limited number of colours","Data Representation"],
+["What are the advantages of vector graphics over bitmap graphics?","Vector graphics are editable, Vector graphis are scalable meaning they can be displayed at any size, Vector graphics generally have smaller file sizes","Data Representation"],
+["What is MIDI?","MIDI is a set of instrucitons that contain messages or events on how to produce sound for a digital device","Data Representation"],
+["Give some examples of the information contained in a MIDI event", "Note on, note off, pitch, volume, vibrato, key pressure plus any other reasonable response","Data Representation"],
+["What are the advantages of MIDI?","MIDI files are generally small, can play using different instruments, can easily edit MIDI files so there is no need for re-recording, can change key, transpose music for instance","Data Representation"],
+["The following sequence of data have been received: 011 101 001 110 111 101 000. Using majority voting what is the correct sequence?","1 1 0 1 1 1 0","Data Representation"],
+["How many binary digits are needed to represent the upper-case characters of the Latin alphabet?","5","Data Representation"],
+["If the ASCII value for “a” is 97 what is the ASCII letter that the ASCII value 105 represents","i","Data Representation"],
+["If the ASCII value for “A” is 65 what is the ASCII letter that the ASCII value 70 represents","F","Data Representation"],
+["What is 2 in ASCII?, 0110010","Data Representation"],
+["How many bits are needed to represent the phrase 'I’ll be back' in ASCII?, 84","Data Representation"],
+["What is the advantage of majority voting over parity bits?","The original signal can be reconstructed if there is an error", "Data Representation"],
+["What is the problem in relation to key exchange for symmetric encryption?", "Cannot easily exchange key without being intercepted, need to find alternative means of distributing the key","Data Representation"],
+["What is the difference between analogue and ditigal data", "Analogue signal is continuous, whereas digital signal is discrete","Data Representation"],
+["Why is dictionary compression not effective for short pieces of text?", "Storing the dictionary itself takes up space and so the compressed file may end up larger than the original uncompressed file","Data Representation"],
+["Why is the Vernam cypher better than the Caesar cyhper?", "Verman cypher is impossible to break, Caesar is very easy to break","Data Representation"],
+["What is an IP address?", "A unique number given to a networked device", "Data Representation"],
+["What is a character code?", "Unique number allocated to a character","Data Representation"],
+["What is the benefit of reverse polish notation?", "No need for brackets, no need to backtrack when evaluating expression, no need for order of operations.","Algorithms"],
+["Explain how the stack is used for evaluating a postfix expression"," Go through each character in the postfix expression from left to right, If character is a number then push number onto the stack, Otherwise if the character is an operator then pop the top 2 numbers from the stack. Evaluate the 2 numbers using the operator. Push result back onto the stack","Algorithms"],
+["Convert the following postfix expression to infix and evaluate: 5 6 2 - *", "(6-2)*5 = 20","Algorithms"],
+["Convert the following infix expressions to postfix: 5 x 2 + 4 / 2","5  2 x  4  2 / +","Algorithms"],
+["What is the time complexity of the merge sort algorithm?","O(n log n)","Algorithms"],
+["What is the time complexity of the bubble sort algorithm?","O(n^2)","Algorithms"],
+["What is the time complexity of the linear search algorithm?", "O(n)","Algorithms"],
+["What is the time complexity of the binary search algorithm?", "O(log n)","Algorithms"],
+["What is the time complexity of the travelling salesman problem?","o(n!)","Algorithms"],
+["Explain what an intractable problem is and give an example", "Takes longer than polynomial time, The travelling salesman problem","Algorithms"],
+["Give an example of an unsolvable algorithm", "Halting problem","Algorithms"],
+["What is an heuristic algorithm", "An algorithm that does not necessarily find the optimal solution, but finds an alternate reasonable solution in a sensible time","Algorithms"],
+["What is the angle between vectors a and b where a={1,2} and b={3,4}?", "19.66", "Abstract Data Types"],
+["What is the dot product of vectors a and b where a={1,2,3} and b={4,5,6}?","32", "Abstract Data Types"],
+["Add vectors a and b where a={3,4,7,6,8} and b={3,7,2,9,5}","{6,11,9,15,13}", "Abstract Data Types"],
+["What is 2a where a is the vector {6,3,2,1,6,7}?","{12,6,4,2,12,14}", "Abstract Data Types"],
+["Find the convex combination, a.u+b.v, where u= [1, 3] and  v=  [2, 5], a=0.3 and a+b=1?","(1.7,4.4)", "Abstract Data Types"],
+["What is the hash value if the hash key is 83 and  the function is hashkey + 7 MOD 3?", "0", "Abstract Data Types"],
+["Explain the difference between dynamic and static memory","Static memory is data structure with a contiguous space in memory. The next memory location is the next address. Dynamic data structures link to the next address with  a pointer.  The advantage is that we can easily remove and add data elements","Abstract Data Types"],
+["What are hash tables?","Hash tables are data structures that contain key value pairs a bit like dictionaries, but the index position of an item in the table is determined by an encoding of the key providing a direct mapping between the key and its position thereby allowing retrieval of the desired data without the need for searching the data structure","Abstract Data Types"],
+["What is the difference between a stack and a Queue?","A queue is a first in first out data structure, where as a stack is a last in first out data structure","Abstract data types"],
+["For the 3 values, 5, 7, 9 stored in a binary tree with 7 at the root node, 5 on the left node and 9 on the right node what order will the nodes be traversed in for pre-order, in-order and post order", "pre-order 7, 5, 9, in-order 5, 7, 9, and post order 5, 9, 7","Abstract Data Types"],
+["If set A={2,3,4,5} and set B={4,5,6,7} what is 𝐴 union 𝐵?", "{2,3,4,5,6,7}","Regular Expressions"],
+["If set A={2,3,4,5} and set B={4,5,6,7} what is 𝐴 intercept 𝐵?", "{4,5}","Regular Expressions"],
+["If set A={2,3,4,5} and set B={4,5,6,7} what is A - B?", "{2,3,6,7}","Regular expressions"],
+["If set A={2,3,4} and set B={4,5,6} what is the cartesian product", "{(2,4),(2,5),(2,6),(3,4),(3,5),(3,6),(4,4),(4,5),(4,6)}","Regular Expressions"],
+["Given the regular expression a+b+, write down two valid expressions?", "eg. ab, aab","Regular Expressions"],
+["Given the regular expression a?b*c, which of the following is a valid expression?", "eg. abc, bbbbc","Regular Expressions"],
+["Explain the functionality of the ? * + metacharacters in regular expressions", "? 0 or 1 preceding value, + 1 or more preceding values, * 0 or more preceding values","Regular Expressions"],
+["What is returned from the functional programming command: head[1,2,3,4,5]","1","Functional Programming"],
+["What is returned from the functional programming command: tail[1,2,3,4,5]","[2,3,4,5]","Functional Programming"],
+["What is returned given the following programming commands: f x = x * 2; map f [1,2,3,4]?","[2, 4, 6, 8]","Functional Programming"],
+["What is returned from the functional programming command: foldr (+) 2 [4,8,8,4]", "26","Functional Programming"],
+["What is returned from the functional programming commands: let f x = x / 2; let g x = 3 + x; f.g 5","4","Functional Programming"],
+["What is a higher-order function?","A function that takes a function as an argument and returns a function","Functional Programming"],
+["Explain what is meant by partial function application","Apply a function with fewer that the total number of arguments","Functional Programming"],
+["Explain what is meant by immutable and mutable objects","Mutable objects can have their value change, immutable objects cannot but they can reference a value at another location","Functional Programming"],
+["What is a first class object?","An object that can be passed as arguments to other functions, returned from other functions, stored in data structures","Functional Programming"],
+["What are the characteristics of big data?","Volume, Velocity and Variety","Functional Programming"],
+["What is the result of applying f o g to 3 when f(x) = 3 * x and g(x) = x + 2?","15","Functional Programming"],
+["What is a Universal Turing Machine?", "A Universal Turing machine can simulate the behaviour of any Turing machine. The instructions of  the Turing machine are stored on the tape","Theory of Computation"],
+["Why is a Turing machine considered to be an interpreter?", "A Turing machines reads one instruction at a time","Theory of Computation"],
+["Why is a Turing machine more powerful than a real computer?", "A Turing machine has infinite memory (tape length)","Theory of Computation"],
+["What is the relation between an algorithm and a Turing machine?", "If an algorithm exists that can solve a problem, then a Turing machine can be created to solve the problem","Theory of Computation"],
+["Explain the Halting problem","A algorithm that can determined whether a program with a specified input with halt or run forever does not exist","Theory of computation"],
+["What components are needed for a Turing machine?","A tape of infinite length, a set of symbols, a read/write head, the machine state, a set of instructions","Theory of Computation"],
+["Why can a Turing machine not solve the Halting problem?", "The Halting problem itself cannot be solved.","Theory of Computation"],
+["Simplify the following Boolean expression: 1 + A + B + A.B","1","Boolean"],
+["Simplify the following Boolean expression: (A + B).(A + B)","A+B","Boolean"],
+["What is the purpose of a D-type flip flop?", "Used as memory to store values", "Boolean"],
+["Explain the difference between serial and parallel transmission","Serial transmission refers to transmission of one bit of data at a time along a single wire between computer components whereas parallel transmission allows multiple bits along multiple wires to be transmitted simultaneously","Communication and Networking"],
+["What are the benefits of serial transmission over parallel transmission?","It can be used over longer distances than parallel transmission, because there is no skew and no crosstalk interference","Communication and Networking"],
+["What is the difference between synchronous and a synchronous data transmission?", "Synchronous transmission requires a clock to allow synchronisation between the sender and receiver/ Data are sent continuously Asynchronous transmission is slower than synchronous transmission, because more data are sent / We need to send extra bits owing to the need for parity, stop and start bits / In synchronous transmission data are sent continuously but in asynchronous transmission data are sent in packets","Communication and Networking"],
+["Define latency","The delay in data transfer from one component to another","Communication and Networking"],
+["Explain the difference between the bit rate and the baud rate","Baud rate is the number of changes of signal per second whereas bit rate is the number of bits transmitted per second","Communication and Networking"],
+["What is bandwidth?","Bandwidth refers to the range of frequencies at which the data can be transmitted and relates the volume of data that can be transmitted along the medium in a given time.","Communication and Networking"],
+["What is the relationship between bit rate and bandwidth?","There is a directly proportional relationship between bandwidth and bit rate.","Communication and Networking"],
+["Explain 3 ways how you would make a WiFi network more secure.", "Encryption, turn of the SSID broadcast,Use a MAC address whitelist","Communication and Networking"],
+["What additional hardware is needed for Wi Fi?", "Wireless access point, Wireless network adaptor","Communication and Networking"],
+["Explain what is meant by the term protocol","A set of rules allowing devices to communicate","Communication and Networking"],
+["What is the purpose of the SSID in wireless networking?","The SSID (Service Set Identifier) is the name given to a wireless network so that it can be identified. WiFi networks often broadcast their SSID, so users can connect more easily","Communication and Networking"],
+["Explain the advantage of a peer-to-peer network over a client-server network","A peer to peer network does not need a central server, it is cheaper to set and run, do not need additional security and services needs for a client server network","Communication and Networking"],
+["What is meant by logical topology?", "Refers to how the network behaves with regard to how the packets move around the network","Communication and Networking"],
+["What is the difference between HTTP and HTTPS?", "HTTPS is secure as it uses encryption","Communication and Networking"],
+["What is the role of the DNS server?", "To map between the domain name and an IP address","Communication and Networking"],
+["How does the transport layer of the TCP/IP stack determin which application layer should deal withe the request?", "Port number","Communication and Networking"],
+["What is the purpose of a subnet mask?", "identifies which computers are on the same segment, so can send packets directly","Communication and Networking"],
+["What is the purpose of a router?", "To direct packets according to their destination IP address","Communication and Networking"],
+["Explain the difference between thick and thin client and the benefits and drawbacks of each", "Thin client relies on the server for data and applications, for a thick client the data and applications will be stored on the local machine. Advantages of thin client Cheap low spec and old machines can be used for the clients Easy to maintain and manage software updates on a server Data are stored in one central location on the server so can be more secure. Make it harder to pirate software, Disadvantages of thin client: If server goes down the whole network is affected, Need expensive very high performing server, Need a good quality network to transfer data and requests between client and server, Can be a security risk as data are transferred over the network. Advantages of thick client: Do not need such a robust network and there is a lot less network traffic, Do not need such high spec servers, Different software can be installed on different machines. Disadvantages of thick client: Need to have high specification clients, Software needs to be on all client machines, thereby making maintenance and updating software more difficult", "Communication and Networking"],
+["Explain how asymmetric encryption works","Asymmetric  encryption uses two keys a public key and a private key, Supposing Alice wants to send a message to Bob.  Alice uses Bob’s public key that is made available to all in order to encrypt the message.  She then send the message and Bob decrypts the message using his own private key that is known only to him.  To reply Bob uses Alice’s public key to encrypt his message.  Bob sends the message and Alice decrypts the message using Alice’s private key.","Communication and Networking"],
+["Given the following URL: http://www.bbc.co.uk/news/world-middle-east-23691571 which part refers to the FQDN?","www.bbc.co.uk","Communication and Networking"],
+["Explain what challenges legislators face in the digital era","Technology can be used for illegal purposes in unforeseen ways / Technology changes rapidly; the law cannot keep up with these changes / Internet is global, so any activity that may be legal in one country may be illegal in another / Encryption makes the monitoring of criminal activity much more difficult / Crimes may be committed by states / Powerful technology companies lobby for their own interests","Society"],
+["What is personal data?","Data that allows an individual to be identified","Society"],
+["Explain why many government agencies monitor emails routed over the internet and explain the ethical consequences of this","To identify criminal behaviour, terrorists, political activists. Innocent people will lose their right to privacy","Society"],
+["Under what UK legislation can someone be prosecuted for downloading music from the internet without the owners consent?", "Copyright, Designs and Patents Act","Society"],
+["Under what UK legislation can government agencies gain access to a users record of visited websites from their ISP?", "Investigatory Powers Act","Society"],
+["What UK legislation protects homeowners wifi network being accessed by unauthorised users?", "Telecommunications Act","Society"],
+["Under what UK legislation can someone be prosecuted for distributing viruses?","Computer Misuse Act","Society"],
+["Why do aircraft black boxes use solid state instead of magnetic disks?","Bceause they are more robust and more able to withstand impact in a crash","Hardware and Software"],
+["What is the difference between primary and secondary storage?","Primary storage is volatile while secondary storage is not","Hardware and Software"],
+["What are the benefits of SSD over magnetic had disks?","More robust, use less energy, make less noise, no moving parts","Hardware and Software"],
+["Describe the principle of operations of a barcode reader","The bar code scanner emits laser light and detects reflected light off the bar code.  The columns of the bar code which are coloured black and white are evenly spaced and have the same width and correspond to a bit. The white columns reflect the laser light and this corresponds to a 0.  The black columns do not reflect back the reflected light and this is encoded as a 1. Parity error checking allows the scanner to determine which way round the scanner has read the bar code. ","Hardware and Software"],
+["Describe the principle of operations of a digital camera","A digital camera uses a charged couple device (CCD). This is an array of tiny light detectors that measures the intensity of light at red green and blue wavelengths that passes though the camera lens. The intensity of light is then converted to an electrical signal that is then encoded into binary values for each colour.  This occurs across all detectors in the CCD array and so a complete picture can be captured. Nowadays we can get cameras on phones that can take 40 Mega pixel images","Hardware and Software"],
+["Describe the principle of operations of RFID","RFID is able to uniquely identify an object. Passive RFID chips do not have their own power source which allows for them to be small. The RFID chips get their power source from nearby radio transmitters (or RFID detectors) that are constantly emitting radio waves.  When an RFID chip comes within range of an RFID detector, the chip is powered by the radio waves which activates the chip to transmit a signal to the detector that uniquely identifies the chip.  Active RFID has its own power source which means that it can transmit over longer distances.","Hardware and Software"],
+["Explain what general purpose, specialist and bespoke software are", "General purpose software is designed to be widely used in many ways for both business and personal use, specialist Software is developed for a specific use and bespoke software is tailor made software that is developed for a specific organisation or client.","Hardware and Software"],
+["Give some examples of system software","Operating system, Utility programs, libraries","Hardware and Software"],
+["Explain the purpose of the data bus", "Allows the transfer of data between different computer components including the main memory, processor and input/output controllers.  The data bus sends data in both directions for the processor, and memory, but input controllers send data only and output controllers receive data only.","Architecture"],
+["Explain the purpose of the address bus", "The address bus specifies the physical memory address that we wish to write data to or read from.  The processor sends address requests and all the other components receive requests","Architecture"],
+["Explain the purpose of the control bus", "The control bus is used to send commands from the processor to other components and to receive status signals from the components.  The control bus sends signals in both directions for all components","Architecture"],
+["Explain the difference between von Neumann and Harvard architectures","With von Neuman the data and instructions are stored in the same memory, whereas with Harvard architecture data and instructions are stored seperately","Architecture"],
+["Explain the difference between direct address mode and immediate addressing mode","Immediate addressing mode – The data value in the operand is part of the instruction. In other words this is the actual value we apply the operation to, direct addressing mode – The operand specifies the address of the data in its memory location","Architecture"],
+["What is an interrupt?","Interrupts are messages from software applications or hardware that request processing resources from the processor. If the processor is performing operations already then those processes can be interrupted and suspended and the CPU processes the interrupt request","Architecture"],
+["What is the word length of  a processor?","The number of bits that can be processed in a single operation","Architecture"],
+["Explain the stored program concept","The instructions are stored in main memory.  The instructions are fetched, decoded and executed in the processor","Architecture"], 
+["What is the maximum number of memory locations  that can be accessed for a computer system that has a 32 bit address bus?", "2^32","Architecture"],
+["Explain what the data, address and control bus do during a write process from the processor to main memory", "Signal to write is placed on control bus, control bus carries the clock signal to synchronise the memory and processor, The data to write are placed on the data bus, and the location in memeory where the data is to be stored is placed on the address bus","Architecture"],
+["What is the purpose of data normalisation","To simplify the data structure, to reduce data redundancy and to remove repeating data, to be able to update, remove and search the database, to reduce the size of the database, to reduce anomalies: update, deletion and insertion","Databases"],
+["What is the definition of first normal form (1NF)?","The data are atomic, there are no repeating groups of attributes","Databases"],
+["What is the defintion of second normal form (2NF)?","Need to be in 1NF (so data are atomic and no repeating groups of attributes) and no partial key dependencies of non-key attributes","Databases"],
+["What is the definition of third normal form? (3NF)","Need to be in 1NF and 2NF and no dependencies on non-key attributes","Databases"],
+["What methods can be employed to control simultaneous access to a database server from multiple client?","Record locks, Serialisation, Time stamp ordering, commitment ordering","Databases"],
+["Explain what a recursive function is and what the general and base case are","A recursive function is a function that calls itself. A base case is used to determine the condition for the recursion to stop. A recursive function must have a base case. Without a base case the recursion will be stuck in an infinite recursion depth. The general case contains the recursive call to the function","Programming"],
+["In the context of the object oriented paradigm what is a class?","A class is the blueprint or template for the structure of an object. It contains methods and property/attribute fields that describe the behaviours and characteristics of objects.","Programming"],
+["In the context of the object oriented paradigm what is instantiation?","The creating of objects","Programming"],
+["In the context of the object oriented paradigm what is method","Methods define the behaviours of the classes","Programming"],
+["In the context of the object oriented paradigm what is inheritance","The methods and attributes of the parent class are shared by the subclass","Programming"],
+["In the context of the object oriented paradigm what is the difference between composition and aggregation association","In composition aggregation the child class cannot exist independently of the parent class, whereas for aggregation association the child can exist without the parent class","Programming"],
+["In the context of programming, what is a dictionary","A data structure containing one or more key value pairs","Programming"],
+["What are local and global variables and what are the advantages of local variables over global variables","Global variables accessible to the whole program and local variables are only accessible within the scope (eg functions) in which they are defined Local variables are removed from memory once the task is complete, Values cannot be changed outside the scope","Programming"],
+["What is an intermediate code and why is it used","Intermediate code lies between high level code and low level code. Intermediate code is designed to be portable to that an interpreter can be developed to each machine architecture so there is no need to compile each time for difference machines, thereby making the code more portable. In addition intermediate code protcts the integrity of the source code","Programming"],
+["Explain the difference between a procedure and a function","A function always returns a value when called","Programming"],
+["What are the components of a stack frame?","local variables, return address, parameters, register values","Programming"],
+["In the context of the object oriented paradigm, Explain what overriding means", "Method in the subclass has the same name as method in the parent class but has different behaviour","Programming"],
+["What is meant by an imperative high level programming language?", "Operations performed in a sequence", "Programming"],
+["What is the difference between assembly language and machine code?","Machine code is in binary, Assembly language still need translating, and Assembly language uses mnemonics", "Programming"],
+["What is the difference between viruses and worms?","Worms attach to network tools and self-replicating whereas virus' require user intervention, viruses are attached to files, where as worms are standalone","Security"],
+["Describe the steps for sending a digital signature from computer A to computer B","Apply a hash (one way encryption), to the message to produce the message digest. Encrypt the message digest using the Computer A's (the sender’s) private key ato produce the digital signature, S. Append the signature to the original message and encrypt using computer B’s (the receiver’s) public key to produce the cyphertext C to be sent.","Security"]
+
+]
+
+ inter = parseInt(document.getElementById("interleaved").value);
+ //document.getElementById("int").innerHTML=inter;
+ 
+ topc = parseInt(document.getElementById("topic").value);
+ //document.getElementById("top").innerHTML=topc;
+ 
+ topcQ = document.getElementById("topicQ").value;
+ //document.getElementById("topQ").innerHTML=topcQ;
+ 
+ const interQ = [];
+ var j=0;
+ 
+ var x=document.getElementById("interleavedQ");
+ for (var i = 0; i < x.options.length; i++) {
+     if(x.options[i].selected ==true){
+	      interQ[j]=x.options[i].value;
+		  j=j+1;     
+      }
+  }
+  
+  //document.getElementById("intQ").innerHTML=interQ.join(" ");
+  
+  const randomQ = [];
+  const QuestionSample=[];
+  const AnswerSample=[];
+  
+  for (var i = 0; i < topc; i++) {
+    val = Math.floor((Math.random() * q.length));
+	flag=0;
+	 
+	 //console.log(q[val],q[val][2])
+	 while (q[val][2] != topcQ || flag==0){
+	  val = Math.floor((Math.random() * q.length));
+	  
+      flag=1;	  
+	  for (var j = 0; j < QuestionSample.length; j++){
+	    if (randomQ[j]==val){
+	     flag=0;
+		}
+	  }
+	  
+	 }
+	 
+	 randomQ[i]=val
+	 QuestionSample[i]=q[randomQ[i]][0];
+	 AnswerSample[i]=q[randomQ[i]][0]+"<BR>"+q[randomQ[i]][1];
+  }
+  
+   document.getElementById("random").innerHTML=QuestionSample.join("<br><br>");
+   document.getElementById("randomA").innerHTML=AnswerSample.join("<br><br>");
+  
+  const randomQinter = [];
+  const QuestionSampleInter=[];
+  const AnswerSampleInter=[];
+  
+  for (var i = 0; i < inter; i++) {
+    val = Math.floor((Math.random() * q.length));
+	flag=0;
+	flag1=0;
+	
+	 while (flag==0 || flag1==0){
+	  val = Math.floor((Math.random() * q.length));
+	  
+	  flag1=0;
+	  for (var j = 0; j < interQ.length; j++){
+	  //console.log(q[val],q[val][2])
+	   if (interQ[j]==q[val][2]){
+	    flag1=1;
+	   }
+	  }
+	  
+      flag=1;	  
+	  for (var j = 0; j < QuestionSampleInter.length; j++){
+	    if (randomQinter[j]==val){
+	     flag=0;
+		}
+	  }
+	  
+	 }
+	 
+	 randomQinter[i]=val
+	 QuestionSampleInter[i]=q[randomQinter[i]][0];
+	 AnswerSampleInter[i]=q[randomQinter[i]][0]+"<BR>"+q[randomQinter[i]][1];
+  }
+  
+   document.getElementById("randomInter").innerHTML=QuestionSampleInter.join("<br><br>");
+   document.getElementById("randomInterA").innerHTML=AnswerSampleInter.join("<br><br>");
+  
+}
+</script>
+
+
+
+</body>
+</html>
