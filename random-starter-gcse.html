@@ -2,29 +2,83 @@
 <html>
 
 <head>
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<style>
-p{
- font-family: helvetica;
- 
-}
+  <meta charset="UTF-8">
+  <title>Computer Science Starter Quiz</title>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <style>
+    body {
+      font-family: Helvetica, sans-serif;
+      background-color: #f5f7fa;
+      padding: 24px;
+    }
 
-h1,h2,h3{
- font-family: helvetica;
-}
+    h1, h2, h3 {
+      font-family: Helvetica, sans-serif;
+    }
 
-label{
- font-family: helvetica;
- font-size: 120%;
-}
+    .form-section {
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      padding: 24px;
+      margin-bottom: 24px;
+    }
 
-</style>
+    label {
+      font-size: 1.2em;
+      display: block;
+      margin-top: 16px;
+      font-weight: bold;
+    }
+
+    select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 8px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 1em;
+      transition: border-color 0.3s;
+    }
+
+    select:focus {
+      border-color: #009688;
+      outline: none;
+    }
+
+    button {
+      background-color: #009688;
+      color: white;
+      padding: 12px 24px;
+      font-size: 1em;
+      border: none;
+      border-radius: 6px;
+      margin-top: 24px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #00796B;
+    }
+
+    .output-section {
+      padding: 24px;
+      border-radius: 12px;
+      margin-top: 32px;
+    }
+
+    .output-section h2 {
+      margin-top: 0;
+    }
+  </style>
 </head>
 
-<body>
+<body class="w3-container">
 
-<h2> GCSE Computer Science Starter Quiz </h2>
+<h2 class="w3-center w3-margin-top"> GCSE Computer Science Starter Quiz </h2>
 
+ <div class="form-section w3-card">
 <label for="interleaved">Enter number of interleaved questions:</label>
 <select id="interleaved" name="interleaved">
   <option value="0">0</option>
@@ -34,9 +88,9 @@ label{
   <option value="4">4</option>
   <option value="5">5</option>
   <option value="6">6</option>
-</select><br><br>
+</select>
 
-<label for="interleavedQ">Enter topic questions (multiple selection, hold down ctrl key and mouse click):</label><br><br>
+<label for="interleavedQ">Enter topic questions (multiple selection, hold down ctrl key and mouse click):</label>
 <select id="interleavedQ" name="interleavedQ" size="10" multiple>
   <option value="Algorithms">Algorithms</option>
   <option value="Boolean">Boolean</option>
@@ -48,7 +102,7 @@ label{
   <option value="Numbers">Numbers</option>
   <option value="Programming">Programming</option>
   <option value="Security">Security</option> 
-</select><br><br>
+</select>
 
 <label for="topic">Enter number of topic questions:</label>
 <select id="topic" name="topic">
@@ -59,7 +113,7 @@ label{
   <option value="4">4</option>
   <option value="5">5</option>
   <option value="6">6</option>
-</select><br><br>
+</select>
 
 <label for="topicQ">Enter topic questions:</label>
 <select id="topicQ" name="topicQ">
@@ -76,20 +130,20 @@ label{
 </select><br><br>
 
 <button onclick="run()">Generate Quiz</button>
-<br><br>
+</div>
 
-<DIV class="w3-container w3-teal">
-<H2>Questions</H2>
-<H2 id="randomInter"></H2>
-<H2 id="random" ></H2><br>
-</DIV>
-<BR><BR>
-<DIV class="w3-container w3-light-grey">
-<H2>Answers</H2>
-<H2 id="randomInterA" ></H2>
-<H2 id="randomA" ></H2><br>
-</DIV>
-<BR><BR>
+  <div class="output-section w3-pale-blue w3-card">
+    <h2>Questions</h2>
+    <h3 id="randomInter"></h3>
+    <h3 id="random"></h3>
+  </div>
+
+  <div class="output-section w3-light-grey w3-card">
+    <h2>Answers</h2>
+    <h3 id="randomInterA"></h3>
+    <h3 id="randomA"></h3>
+  </div>
+  
 <script>
 
 function run()
@@ -118,10 +172,10 @@ q=[
 ["Give 4 examples of Boolean operators", "AND OR XOR NOT", "Boolean"],
 ["Which logic gate requires that both inputs have to be true for the output to be true?", "AND gate", "Boolean"],
 ["Which logic gate only requires one of inputs have to be true for the output to be true?", "OR gate", "Boolean"],
-["Which logic gate requires that only of one of inputs can to true for the output to be true?", "XOR gate", "Boolean"],
+["Which logic gate requires that only one of the inputs can be true for the output to be true?", "XOR gate", "Boolean"],
 ["Given the logic expression Q=A.B what is the value of Q when A and B are both 0?", "0", "Boolean"],
 ["Given the logic expression Q=A+B what is the value of Q when A is True and B is False?", "True", "Boolean"],
-["A logic circuit is given as Q = A AND (NOT B). What is the value A and B is 1 when Q is 1?", "A is 1 and B is 0", "Boolean"],
+["A logic circuit is given as Q = A AND (NOT B). What is the value A and B 1 when Q is 1?", "A is 1 and B is 0", "Boolean"],
 ["A logic circuit is given as Q = NOT (A OR B). What is the value of B if Q is 1 and A is 0?", "B is 0", "Boolean"],
 ["A logic gate is given as Q = A XOR B. What is the value A when B is 1 and Q is 0?", "1", "Boolean"],
 ["In the context of computing what is a bus?", "Wires through which data and instructions are transferred between computer components", "Computer Systems"],
@@ -133,8 +187,8 @@ q=[
 ["What type of memory does the BIOS use?", "ROM", "Computer Systems"],
 ["What is virtual memory?", "Additional memory on secondary storage that behaves like primary storage", "Computer Systems"],
 ["What type of memory cannot have its contents edited or changes?", "ROM (Read Only Memory)", "Computer Systems"],
-["What is the cloud?", "Can store data and files on a server elsewhere that can be accesses via the internet.  Can also use applications over the internet", "Computer Systems"],
-["What is an embedded system?", "A computer system that is designed for a specific function and are part of another machine", "Computer Systems"],
+["What is the cloud?", "Can store data and files on a server elsewhere that can be accessed via the internet.  Can also use applications over the internet", "Computer Systems"],
+["What is an embedded system?", "A computer system that is designed for a specific function and is part of another machine", "Computer Systems"],
 ["What is the purpose of the BIOS?", "Loads the operating system; performs a variety of tests during bootup", "Computer Systems"],
 ["Explain how hard disk drives work", "Has tiny magnets on a disk platter that store bits of data that are encoded by the polarity of the magnet; A moving head can read and write to the disk", "Computer Systems"],
 ["Explain how optical disks work", "Have pits and lands for scattering and reflecting laser light which are encoded as 1 and 0s", "Computer Systems"],
@@ -160,7 +214,7 @@ q=[
 ["What best describes colour depth of an image?", "The number of bits per pixel", "Data Representation"],
 ["What is quantising?", "When samples are rounded to the nearest integer", "Data Representation"],
 ["What is the sample resolution of a digital signal?", "The number of bits used to represent each sample", "Data Representation"],
-["Explain Pixilation", "Occurs when the image is overstretched and the image has a blocky and blurred appearance. This arises when the image is presented at too large a size and there are not enough pixels to reproduce the details in the image at this larger size", "Data Representation"],
+["Explain Pixelation", "Occurs when the image is overstretched and the image has a blocky and blurred appearance. This arises when the image is presented at too large a size and there are not enough pixels to reproduce the details in the image at this larger size", "Data Representation"],
 ["What is resolution?", "Image resolution is the number of pixels per area of an image and is often given in dots per inch (DPI). The more pixels the better the quality of the image. Lower resolution images may be pixelated", "Data Representation"],
 ["What is the sample rate of a digital sound wave?", "Number of samples per second", "Data Representation"],
 ["How do you convert from an analogue to digital signal?", "1: Convert the sound wave to an electrical signal 2: Sample the wave 3: quantise the sample 4: encode as binary", "Data Representation"],
@@ -172,13 +226,13 @@ q=[
 ["what is a pixel?", "Pixels are tiny dots that make up bitmap images. An image can be constructed from many pixels which will have different colours arranged in rows and columns", "Data Representation"],
 ["What is a database attribute?", "A characteristic of  a record", "Database"],
 ["What is a primary key?", "An attribute that uniquely identifies each record", "Database"],
-["What are primary keys is other tables that allow tables linked together by cross referencing data between tables?", "Foreign Key", "Database"],
+["What are primary keys in other tables that allow tables linked together by cross referencing data between tables?", "Foreign Key", "Database"],
 ["Which legislation is designed to protect computer systems from unauthorised access?", "Computer Misuse Act", "Legal Issues"],
 ["Which legislation makes it illegal to spread computer viruses?", "Computer Misuse Act", "Legal Issues"],
 ["Which legislation makes it illegal to use someone's Wi-fi without authorisation?", "Telecommunications Act", "Legal Issues"],
 ["Which legislation forbids sharing information about an individual without permission?", "Data Protection Act", "Legal Issues"],
 ["Which legislation is designed to protect intellectual property?", "Copyright Designs and Patents Act", "Legal Issues"],
-["Which legislation is designed to protect information collected by an orgnaisation about an individual?", "Data Protection Act", "Legal Issues"],
+["Which legislation is designed to protect information collected by an organisation about an individual?", "Data Protection Act", "Legal Issues"],
 ["What is software piracy?", "Illegally copy and distribute copyrighted software", "Legal Issues"],
 ["Under what licence can a creator allow others to copy their work?", "Creative common licence", "Legal Issues"],
 ["Which legislation mandates an internet service provider to keep a record of the websites their customers have accessed?", "Investigatory Powers Act", "Legal Issues"],
@@ -186,7 +240,7 @@ q=[
 ["What is latency?", "A delay in transmission of the signal", "Networking"],
 ["What network topology has all devices connected to a cable?", "Bus network", "Networking"],
 ["What network topology has all devices connected to a server?", "Star network", "Networking"],
-["What network topology has each node is connected to two other nodes?", "Ring network", "Networking"],
+["What network topology has each node connected to two other nodes?", "Ring network", "Networking"],
 ["What network topology has each device connected to every other device on the network?", "Full mesh network", "Networking"],
 ["What types of cables are used for the existing telephone network?", "Copper", "Networking"],
 ["What type of cables are used for the internet backbone?", "Fibre Optic", "Networking"],
@@ -205,7 +259,7 @@ q=[
 ["What type of network uses encryption to secure the communication so that safe remote access to the private network can be facilitated?", "virtual private network", "Networking"],
 ["What transport layer protocol is used for streaming lots of data eg for gaming and video conferencing?", "UDP", "Networking"],
 ["What is a standalone computer?", "A computer which is not connected to the network", "Networking"],
-["Which application layer protocol is use for accessing web sites?", "HTTP", "Networking"],
+["Which application layer protocol is used for accessing web sites?", "HTTP", "Networking"],
 ["For a MAC Address filter what is the difference between a white list and a black list?", "A white list only allows devices on the list to access the network whereas a black list allows all devices to connect except those that are on the list", "Networking"],
 ["What are the advantages of a wireless network compared with a wired network?", "Can easily connect to a network and allows increase mobility of working from a device", "Networking"],
 ["In TCP/IP which layer splits the data into packets?", "Application layer", "Networking"],
@@ -246,7 +300,7 @@ q=[
 ["What is the purpose of assembler?", "Translates assembly language to machine code", "Programming"],
 ["What is machine code?", "Executable code expressed as zeros and ones", "Programming"],
 ["What is debugging?", "Finding and fixing errors in the code", "Programming"],
-["What datatype would you use to represent text?", "string or characer", "Programming"],
+["What datatype would you use to represent text?", "string or character", "Programming"],
 ["What datatype would you use to represent 'Bonjour'?", "String", "Programming"],
 ["What datatype would you use to represent the numbers 4.13 and 19.35?", "Real / float", "Programming"],
 ["What is the value of NOT(3 < 4)?", "False", "Programming"],
@@ -259,29 +313,29 @@ q=[
 ["What is a global variable?", "A variable that can be used anywhere in a program", "Programming"],
 ["What is a local variable?", "A variable that can only be accessed within a certain block of code typically within a function", "Programming"],
 ["What is casting?", "Convert between different datatypes", "Programming"],
-["What is a variable? ", "stores a value in memory that can changed during the execution of the program", "Programming"],
+["What is a variable? ", "stores a value in memory that can be changed during the execution of the program", "Programming"],
 ["What are values that passed as inputs into a subroutine called?", "Parameters", "Programming"],
-["What the purpose of validation for a computer system?", "to determine whether the input values should be accepted by the systems or not", "Programming"],
+["What is the purpose of validation for a computer system?", "to determine whether the input values should be accepted by the systems or not", "Programming"],
 ["Is assembly language a high level or low level programming language?", "Low level", "Programming"],
 ["Is machine code a high level or low level programming language?", "Low level", "Programming"],
-["which programming translator converts the code line by line as it runs?", "Interpreter", "Programming"],
+["Which programming translator converts the code line by line as it runs?", "Interpreter", "Programming"],
 ["What is erroneous test data?", "Data that are invalid and should not be accepted by the application", "Programming"],
 ["What is boundary test data?", "Data on the upper and lower limits of what is expected should be accepted and data immediately beyond the upper and lower limits of what is expected should not be accepted", "Programming"],
 ["What is a runtime error?", "An error that is not picked up during translation, Error during the running of the code", "Programming"],
-["Which programming construct uses IF and ELSE to represents a decision in the code according to some condition?", "Selection", "Programming"],
+["Which programming construct uses IF and ELSE to represent a decision in the code according to some condition?", "Selection", "Programming"],
 ["What is the difference between a procedure and a function?", "A function returns a value", "Programming"],
-["What datatype you use to represent someone's age?", "Integer", "Programming"],
-["what is a data structure that can hold multiple values called?", "Array/list", "Programming"],
+["What datatype do you use to represent someone's age??", "Integer", "Programming"],
+["What is a data structure that can hold multiple values called?", "Array/list", "Programming"],
 ["What are the advantages of low level programming languages compared high level languages?", "Low level languages are better optimised because there is no need for translation and can be used to code up embedded systems for which there are no compilers or interpreters", "Programming"],
 ["Describe two input validation checks for entering the age of a school pupil", "Check that input is the integer datatype and check that it is within a sensible range eg 3-19", "Programming"],
-["What are the advantates of high level languages compared with low level languages?", "Easier to understand and easier to debug", "Programming"],
+["What are the advantages of high level languages compared with low level languages?", "Easier to understand and easier to debug", "Programming"],
 ["Is the following expression (9 == 6) or (9 < 10) true or false?", "False", "Programming"],
 ["List 3 datatypes used in programming languages", "Boolean / Real / integer / String / character", "Programming"],
 ["What are syntax errors?", "Errors that will be picked up by the translator before running that including typos", "Programming"],
 ["What are the advantages of subroutines?", "Can easily reuse code and makes code easier to debug", "Programming"],
-["Given the array a=[3,4,1,2,9,8], what the value of a[4] with index position starting at 1?", "2", "Programming"],
-["Given the array a=[3,4,1,2,9,8], what the value of a[5]-a[1] with index position starting at 1?", "6", "Programming"],
-["Given the array a=[1,2,3,4,5,6] what is returned using the pseudocode statement LENGTH(a)-1?", "5", "Programming"],
+["Given the array a=[3,4,1,2,9,8], what is the value of a[4] with index position starting at 1?", "2", "Programming"],
+["Given the array a=[3,4,1,2,9,8], what is the value of a[5]-a[1] with index position starting at 1?", "6", "Programming"],
+["Given the array a=[1,2,3,4,5,6], what is returned using the pseudocode statement LENGTH(a)-1?", "5", "Programming"],
 ["What datatype would you use to represent the following numbers: 19,-13, 123?", "Integer", "Programming"],
 ["Given the two-dimensional array a=[[3,4,5][6,7,8][9,10,11]], what the value of a[1][2] with index position starting at 1?", "4", "Programming"],
 ["What is the Boolean datatype?", "Has two values: true or false", "Programming"],
@@ -294,7 +348,7 @@ q=[
 ["What malware logs your activity on your computer?", "Spyware", "Security"],
 ["What malware prevents the user accessing files and demands payment so the user can access their files again?", "Ransomware", "Security"],
 ["What malware replicates itself and infects other programs?", "Virus", "Security"],
-["What is the purpose of authentication?", "To confirm the identity an individual", "Security"],
+["What is the purpose of authentication?", "To confirm the identity of an individual", "Security"],
 ["What is a denial of service attack?", "Purposefully impair the operation of a computer system", "Security"],
 ["List 3 social engineering attacks", "blagging, phishing, pharming, shoulder surfing", "Security"],
 ["What is the difference between black box and white box penetration testing?"," black box simulates no insider knowledge and white box simulates insider knowledge","Security"]
